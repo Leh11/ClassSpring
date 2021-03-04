@@ -1,7 +1,5 @@
 package com.bioksam.aula1.controller;
 
-import java.util.Optional;
-
 import com.bioksam.aula1.dominio.Categoria;
 import com.bioksam.aula1.services.CategoriaService;
 
