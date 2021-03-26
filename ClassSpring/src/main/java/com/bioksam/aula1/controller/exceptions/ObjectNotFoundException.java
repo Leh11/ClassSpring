@@ -1,4 +1,4 @@
-package com.bioksam.aula1.services.exceptions;
+package com.bioksam.aula1.controller.exceptions;
 
 public class ObjectNotFoundException extends RuntimeException{
     

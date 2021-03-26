@@ -1,7 +1,7 @@
 package com.bioksam.aula1.controller;
 
-import com.bioksam.aula1.dominio.Categoria;
-import com.bioksam.aula1.services.CategoriaService;
+import com.bioksam.aula1.model.dominio.Categoria;
+import com.bioksam.aula1.controller.services.CategoriaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class CategoriaController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) throws ObjectNotFoundException {
 
-        Categoria obj = service.find(id);
+        Categoria obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 

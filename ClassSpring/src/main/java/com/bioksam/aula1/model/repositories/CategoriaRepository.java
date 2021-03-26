@@ -1,6 +1,6 @@
 
-package com.bioksam.aula1.repositories;
-import com.bioksam.aula1.dominio.Categoria;
+package com.bioksam.aula1.model.repositories;
+import com.bioksam.aula1.model.dominio.Categoria;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

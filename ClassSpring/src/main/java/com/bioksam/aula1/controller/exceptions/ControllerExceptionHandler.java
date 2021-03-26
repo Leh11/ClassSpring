@@ -2,8 +2,6 @@ package com.bioksam.aula1.controller.exceptions;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.bioksam.aula1.services.exceptions.ObjectNotFoundException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,44 +1,34 @@
-package com.bioksam.aula1.dominio;
+package com.bioksam.aula1.model.dominio;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@Entity 
-public class Produto implements Serializable{
-    
+@Entity
+public class Cidade implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    private Double preco;
 
-    @JsonBackReference
-    @ManyToMany
-    @JoinTable(name = "PRODUTO_CATEGORIA", 
-        joinColumns = @JoinColumn(name = "id_produto"),
-        inverseJoinColumns = @JoinColumn(name = "id_categoria"))
-    private List<Categoria> categorias = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "id_estado")
+    private Estado estados;
 
-    public Produto() {
+    public Cidade() {
     }
-    
-    public Produto(Integer id, String nome, Double preco) {
-        setId(id);
-        setNome(nome);
-        setPreco(preco);
+
+    public Cidade(Integer id, String nome, Estado estados) {
+        this.id = id;
+        this.nome = nome;
+        this.estados = estados;
     }
 
     public Integer getId() {
@@ -57,20 +47,12 @@ public class Produto implements Serializable{
         this.nome = nome;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Estado getEstado() {
+        return estados;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
-    public List<Categoria> getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(List<Categoria> categoria) {
-        this.categorias = categoria;
+    public void setEstado(Estado estados) {
+        this.estados = estados;
     }
 
     @Override
@@ -89,7 +71,7 @@ public class Produto implements Serializable{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Produto other = (Produto) obj;
+        Cidade other = (Cidade) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -97,5 +79,5 @@ public class Produto implements Serializable{
             return false;
         return true;
     }
-
+    
 }
