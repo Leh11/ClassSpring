@@ -16,14 +16,10 @@ import com.bioksam.aula1.model.repositories.EnderecoRepository;
 import com.bioksam.aula1.model.repositories.EstadoRepository;
 import com.bioksam.aula1.model.repositories.ProdutoRepository;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import ch.qos.logback.core.net.server.Client;
-
 @SpringBootApplication
 public class CursospringApplication implements CommandLineRunner{
 
