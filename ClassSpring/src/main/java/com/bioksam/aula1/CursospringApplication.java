@@ -1,5 +1,6 @@
 package com.bioksam.aula1;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
@@ -9,6 +10,7 @@ import com.bioksam.aula1.model.dominio.Cidade;
 import com.bioksam.aula1.model.dominio.Cliente;
 import com.bioksam.aula1.model.dominio.Endereco;
 import com.bioksam.aula1.model.dominio.Estado;
+import com.bioksam.aula1.model.dominio.ItemPedido;
 import com.bioksam.aula1.model.dominio.Pagamento;
 import com.bioksam.aula1.model.dominio.PagamentoBoleto;
 import com.bioksam.aula1.model.dominio.Pedido;
@@ -20,6 +22,7 @@ import com.bioksam.aula1.model.repositories.CidadeRepository;
 import com.bioksam.aula1.model.repositories.ClienteRepository;
 import com.bioksam.aula1.model.repositories.EnderecoRepository;
 import com.bioksam.aula1.model.repositories.EstadoRepository;
+import com.bioksam.aula1.model.repositories.ItemPedidoRepository;
 import com.bioksam.aula1.model.repositories.PagamentoRepository;
 import com.bioksam.aula1.model.repositories.PedidoRepository;
 import com.bioksam.aula1.model.repositories.ProdutoRepository;
@@ -47,6 +50,8 @@ public class CursospringApplication implements CommandLineRunner{
 	PedidoRepository pedidoRepository;
 	@Autowired
 	PagamentoRepository pagamentoRepository;
+	@Autowired
+	ItemPedidoRepository itemPedidoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(CursospringApplication.class, args);
 	}
@@ -107,5 +112,18 @@ public class CursospringApplication implements CommandLineRunner{
 
 		pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2));
 		pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2));
+
+		ItemPedido itemPedido1 = new ItemPedido(0.00, 1, 2000.00, pedido1, p1);
+		ItemPedido itemPedido2 = new ItemPedido(0.00, 2, 80.00, pedido2, p3);
+		ItemPedido itemPedido3 = new ItemPedido(100.00, 1, 800.00, pedido2, p2);
+
+		pedido1.getItens().addAll(Arrays.asList(itemPedido1, itemPedido2));
+		pedido2.getItens().addAll(Arrays.asList(itemPedido3)); 
+
+		p1.getItens().addAll(Arrays.asList(itemPedido1));
+		p2.getItens().addAll(Arrays.asList(itemPedido3));
+		p3.getItens().addAll(Arrays.asList(itemPedido2));
+
+		itemPedidoRepository.saveAll(Arrays.asList(itemPedido1, itemPedido2, itemPedido3));
 	}
 }
